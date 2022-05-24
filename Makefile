@@ -16,9 +16,10 @@ $(NAME)	: $(OBJ)
 clean 	: 
 	rm -f $(OBJ)
 
-fclean: clean
+fclean	: clean
 	rm -f $(NAME)
 
-re: fclean all
+re		: fclean all
 
-.PHONY 	:
+.PHONY 	: clean
+	rm -f *.o temp
