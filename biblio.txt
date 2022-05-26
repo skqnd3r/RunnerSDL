@@ -1,0 +1,22 @@
+RECT
+    create rectangle
+    https://wiki.libsdl.org/SDL_Rect
+
+    collision area
+    https://loka.developpez.com/tutoriel/sdl/collision/
+
+    fill rectangle
+    https://wiki.libsdl.org/SDL_FillRect
+
+INPUT
+    event
+    https://wiki.libsdl.org/SDL_Event
+
+    type
+    https://wiki.libsdl.org/SDL_EventType
+
+    touches
+    https://wiki.libsdl.org/SDL_Keycode
+
+tutoriel
+    https://loka.developpez.com/tutoriel/sdl/
