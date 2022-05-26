@@ -4,6 +4,7 @@ SRC = source/main.c\
 	source/draw.c\
 	source/init.c\
 	source/input.c\
+	source/entity.c\
 
 OBJ = $(SRC:.c=.o)
 
@@ -17,7 +18,7 @@ LIBS += -lSDL2 -lSDL2_image
 all:$(NAME)
 
 $(NAME):$(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBS) -o $(NAME)
+	$(CC) $(CFLAGS) $(LIBS) $(OBJ) -o $(NAME)
 
 clean:
 	rm -f $(OBJ)
@@ -27,4 +28,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY	: all clean fclean re
+.PHONY: all clean fclean re
