@@ -17,7 +17,7 @@ LIBS += -lSDL2 -lSDL2_image
 all:$(NAME)
 
 $(NAME):$(OBJ)
-	$(CC) $(OBJ) $(LIBS) -o $(NAME) 
+	$(CC) $(CFLAGS) $(OBJ) $(LIBS) -o $(NAME)
 
 clean:
 	rm -f $(OBJ)
