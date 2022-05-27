@@ -4,7 +4,7 @@
 #include "macro.h"
 #include LIB_SDL
 
-#define WINDOW_WIDTH 480
+#define WINDOW_WIDTH 640
 #define WINDOW_HEIGHT 360
 #define WINDOW_NAME "RunnerSDL"
 
