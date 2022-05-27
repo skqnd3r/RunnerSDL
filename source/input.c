@@ -3,30 +3,34 @@
 
 
 int input_handler(Entity *entity){
-    // catch event
-    SDL_Event event;  // récupère ce que la personne tape sur son clavier
-
+    // DIRECTIONS AXIS
+    const Uint8* keys = SDL_GetKeyboardState(NULL);
+    // if(keys[SDLK_LEFT]){
+    
+    // }
+    // if(keys[SDLK_RIGHT]){
+    
+    // }
+    entity->mv_y = 0;
+    if(keys[SDL_SCANCODE_UP]){
+        if(entity->pos_y >= 0){
+            entity->mv_y = -4;
+        }
+    }
+    if(keys[SDL_SCANCODE_DOWN])
+    {
+        if(entity->pos_y <= WINDOW_HEIGHT-entity->height){
+            entity->mv_y = 4;
+        }
+    }
+    
     // read event
+    SDL_Event event;  // récupère ce que la personne tape sur son clavier
     SDL_PollEvent(&event);
 
-    switch (event.type)
-    {
-    case SDL_QUIT : // Event quand la personne ferme la fenêtre
-        return -1;
-    case SDL_KEYDOWN :
-        switch(event.key.keysym.sym)
-        {
-            case SDLK_UP:
-                entity->pos_y -= 4;
-                break;
-            case SDLK_DOWN:
-                entity->pos_y += 4;
-                break;
-        }
-        printf("Key is down\n");
-        break;                      // Break sert à sortir du switch
-    case SDL_KEYUP   :
-        printf("Key is up");
+    switch (event.type){
+        case SDL_QUIT : // Event quand la personne ferme la fenêtre
+            return -1;
     }
     return 0;
 }
