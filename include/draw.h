@@ -12,6 +12,6 @@ SDL_Texture *loadTexture(Win *app,char *img_path);
 
 void drawEntity(Win *app,Entity *entity);
 void drawCollider(Win *app,Entity *entity);
-SDL_Rect setCollider(Entity *entity);
+void Refresh(Win *app,Entity **entities);
 
 #endif

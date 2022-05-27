@@ -26,17 +26,24 @@ void drawEntity(Win *app,Entity *entity){
     SDL_RenderCopy(app->renderer, entity->texture, NULL, &dest);
 }
 
-SDL_Rect setCollider(Entity *entity){
-    SDL_Rect collider;
-    collider.x = entity->pos_x;
-    collider.y = entity->pos_y;
-    collider.w = entity->width;
-    collider.h = entity->height;
-    return collider;
-}
-
 void drawCollider(Win *app,Entity *entity){
     entity->collider=setCollider(entity);
     SDL_SetRenderDrawColor(app->renderer,255,0,0,0);
     SDL_RenderDrawRect(app->renderer, &entity->collider);
+}
+
+void Refresh(Win *app,Entity **entities){
+    // clear screen
+    prepareCanvas(app);
+
+    for(int i=0;i!=10;i++){
+        // refresh pos
+        if(entities[i]->hide == 0){
+            drawEntity(app, entities[i]);
+            drawCollider(app,entities[i]);
+        }
+    }
+
+    //print screen
+    presentCanvas(app);
 }
