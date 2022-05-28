@@ -22,9 +22,15 @@ int initSDL(Window *win){
     }
     
     // add background
-    app->image = IMG_Load("/ressource/background_1920x1080.png");
-    app->texture = SDL_CreateTextureFromSurface(app->renderer, app->image);
-    
-
+    win->image = IMG_Load("ressource/background_1920x1080.png");
+    if (!win->image){
+        printf("Failed to import backgroubd: %s\n",SDL_GetError());
+        return -1;
+    }
+    win->texture = SDL_CreateTextureFromSurface(win->renderer, win->image); 
+    if (!win->texture){
+        printf("Failed to import background texture: %s\n",SDL_GetError());
+        return -1;
+    }
     return 0;
 }
