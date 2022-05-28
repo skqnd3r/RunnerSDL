@@ -1,3 +1,4 @@
 *.o
 RunnerSDL
 .vscode
+*.framework
