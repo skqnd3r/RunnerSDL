@@ -1,6 +1,6 @@
 #ifndef INPUT
 #define INPUT
-// #include <SDL2/SDL.h>
+
 
 #include "macro.h"
 #include "draw.h"

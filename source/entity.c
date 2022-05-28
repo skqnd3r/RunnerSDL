@@ -24,7 +24,7 @@ Entity *spawnObstacle(Win *app){
     obstacle->pos_x = WINDOW_WIDTH-obstacle->width;
     obstacle->pos_y = WINDOW_HEIGHT-obstacle->height;
     obstacle->life = 1;
-    obstacle->mv_x =- 1;
+    obstacle->mv_x = -1;
     obstacle->mv_y = 0;
     obstacle->hide = 1;
     return obstacle;

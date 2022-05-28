@@ -9,8 +9,13 @@
 #define WINDOW_NAME "RunnerSDL"
 
 typedef struct {
-    SDL_Renderer    *renderer; 
+    // window application
+    SDL_Renderer    *renderer;
     SDL_Window      *window;
+    // backgroung window
+    SDL_Surface     *image;
+    SDL_Texture     *texture;
+
 } Win; /* Donner un nom au type */
 
-#endif  /* !WINDOW */
+#endif  /* !WINDOW */  

@@ -1,7 +1,6 @@
 #include "draw.h"
 
 void prepareCanvas(Win *app){
-    SDL_SetRenderDrawColor(app->renderer, 96,128,255,255);
     SDL_RenderClear(app->renderer);
 }
 
@@ -35,6 +34,10 @@ void drawCollider(Win *app,Entity *entity){
 void Refresh(Win *app,Entity **entities){
     // clear screen
     prepareCanvas(app);
+    
+    // INSIDE A RECT
+    SDL_Rect background={ 0, 0, WINDOW_WIDTH ,WINDOW_HEIGHT };
+    SDL_RenderCopy(app->renderer, app->texture, NULL, &background);
 
     for(int i=0;i!=10;i++){
         // refresh pos
@@ -43,7 +46,6 @@ void Refresh(Win *app,Entity **entities){
             drawCollider(app,entities[i]);
         }
     }
-
     //print screen
     presentCanvas(app);
 }

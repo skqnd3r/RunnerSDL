@@ -11,7 +11,7 @@ int main()
     if(initSDL(app) < 0){
         return -1;
     };
-    SDL_SetRenderDrawColor(app->renderer, 96, 128, 255, 255); // Modifier couleur fond
+    // SDL_SetRenderDrawColor(app->renderer, 96, 128, 255, 255); // Modifier couleur fond
     
     // init funciton
     Entity *entities[10];
@@ -25,10 +25,20 @@ int main()
     // animation
     // int counter =5;
 
+    entities[1]->hide=0;
     while(input_handler(entities[0]) == 0){
-        entities[1]->hide=0;
         Move(entities);
         Refresh(app,entities);
+
+        //while (50)
+        //{
+            /* code */
+        
+        
+            //SDL_SetRenderDrawColor(app->renderer, 255, 255, 255, 255);
+            //SDL_RenderClear(app->renderer);
+        //SDL_RenderPresent(app->renderer);
+       // } 
 
         // // factory
         // if(null) {
@@ -51,3 +61,7 @@ int main()
 
     return 0;
 }
+// SDL_DestroyTexture(texture);
+// SDL_FreeSurface(image);
+// SDL_DestroyRenderer(renderer);
+// SDL_DestroyWindow(window);

@@ -20,5 +20,11 @@ int initSDL(Win *app){
         printf("Failed to initialize renderer : %s\n",SDL_GetError());
         return -1;
     }
+    
+    // add background
+    app->image = IMG_Load("/ressource/background_1920x1080.png");
+    app->texture = SDL_CreateTextureFromSurface(app->renderer, app->image);
+    
+
     return 0;
 }
