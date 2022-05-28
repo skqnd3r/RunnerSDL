@@ -1,22 +1,22 @@
 #include "init.h"
 
-int initSDL(Win *app){
+int initSDL(Window *win){
     // Init SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0){
         printf("Couldn't initialize SDL: %s\n",SDL_GetError());
     }
     
     // Create window
-    app->window = SDL_CreateWindow(WINDOW_NAME, SDL_WINDOWPOS_UNDEFINED,SDL_WINDOWPOS_UNDEFINED,
+    win->window = SDL_CreateWindow(WINDOW_NAME, SDL_WINDOWPOS_UNDEFINED,SDL_WINDOWPOS_UNDEFINED,
     WINDOW_WIDTH,WINDOW_HEIGHT,0);
-    if (!app->window){
+    if (!win->window){
         printf("Failed to initialize %d x %d Windows : %s\n",WINDOW_WIDTH,WINDOW_HEIGHT, SDL_GetError());
         return -1;
     }
 
     // Set Render (don't change)
-    app->renderer = SDL_CreateRenderer(app->window, -1,SDL_RENDERER_ACCELERATED);
-    if (!app->renderer){
+    win->renderer = SDL_CreateRenderer(win->window, -1,SDL_RENDERER_ACCELERATED);
+    if (!win->renderer){
         printf("Failed to initialize renderer : %s\n",SDL_GetError());
         return -1;
     }
