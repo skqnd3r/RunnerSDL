@@ -5,6 +5,6 @@
 
 #include "window.h"
 
-int initSDL(Win *app);
+int initSDL(Window *win);
 
 #endif

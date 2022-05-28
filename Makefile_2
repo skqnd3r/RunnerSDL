@@ -2,6 +2,7 @@ CC = clang
 NAME = RunnerSDL
 
 SRC = source/main.c\
+	source/collider.c\
 	source/draw.c\
 	source/init.c\
 	source/input.c\

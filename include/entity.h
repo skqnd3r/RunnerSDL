@@ -21,8 +21,8 @@ typedef struct {
 #include "window.h"
 #include "draw.h"
 
-Entity *spawnPlayer(Win *app);
-Entity *spawnObstacle(Win *app);
+Entity *spawnPlayer(Window *win);
+Entity *spawnObstacle(Window *win);
 
 SDL_Rect setCollider(Entity *entity);
 void Move(Entity **entities);
