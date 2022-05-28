@@ -17,8 +17,20 @@
 
 #define true 1
 #define false 0
-// STATE
 
+#define PLAYER 0
+#define OBSTACLE 1
+#define BONUS 2
+
+#define OFFSET(x,y,w,h) ({\
+offset_x = x;\
+offset_y = y;\
+offset_w = w;\
+offset_h = h;\
+})
+
+
+// STATE
 // #define PAUSE
 // #define DEAD
 // #define PLAY

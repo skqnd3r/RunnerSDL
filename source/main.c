@@ -14,9 +14,9 @@ int main(){
     
     // init funciton
     Entity *entities[10];
-    entities[0] = spawnPlayer(win);
+    entities[0] = spawnEntity(win,PLAYER);
     for(int i=1;i!=10;i++){
-        entities[i] = spawnObstacle(win);
+        entities[i] = spawnEntity(win,OBSTACLE);
     }
     
     // animation

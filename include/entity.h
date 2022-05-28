@@ -5,6 +5,7 @@
 #include LIB_SDL_IMG
 
 typedef struct {
+    int tag;
     SDL_Texture *texture;
     int pos_x;
     int pos_y;
@@ -21,11 +22,8 @@ typedef struct {
 #include "window.h"
 #include "draw.h"
 
-Entity *spawnPlayer(Window *win);
-Entity *spawnObstacle(Window *win);
-
+Entity *spawnEntity(Window *win,int tag);
 SDL_Rect setCollider(Entity *entity);
 void Move(Entity **entities);
-
 
 #endif
