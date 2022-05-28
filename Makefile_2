@@ -1,5 +1,6 @@
-CC = gcc
+CC = clang
 NAME = RunnerSDL
+
 SRC = source/main.c\
 	source/draw.c\
 	source/init.c\
@@ -8,12 +9,10 @@ SRC = source/main.c\
 
 OBJ = $(SRC:.c=.o)
 
-CFLAGS += -I./include
+CFLAGS += -I /opt/homebrew/include -I include  #ajout
 CFLAGS += -W -Wall -Wextra -Werror
 
-LIBS += -lSDL2 -lSDL2_image
-# -lSDL2_ttf -lSDL2_mixer
-
+LIBS += -l SDL2 -l SDL2_image -L/opt/homebrew/lib #ajout 
 
 all:$(NAME)
 
