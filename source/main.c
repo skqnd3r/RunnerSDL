@@ -1,50 +1,83 @@
-#include <stdio.h>
-#include "collider.h"
-#include "entity.h"
-#include "window.h"
-#include "init.h"
-#include "input.h"
-#include "draw.h"
+#include "library.h"
+#include "macro.h"
+#include "struct/config.h"
+#include "struct/entity.h"
+#include "hybrid.h"
+
 
 int main(){
-    Window *win = malloc(sizeof(Window));
-    if(initSDL(win) < 0){
+    // init function
+    Config *app = malloc(sizeof(Config));
+    if(app==NULL){
+        printf("Failed to allocate memory for App");
         return -1;
     };
-    
+
+    if(initApp(app) < 0){
+        printf("Failed to initialize App");
+        return -1;
+    }
+
     // init funciton
     Entity *entities[10];
-    entities[0] = spawnEntity(win,PLAYER);
-    for(int i=1;i!=10;i++){
-        entities[i] = spawnEntity(win,OBSTACLE);
+    for(int i=0;i!=10;i++){
+        switch (i){
+            case 0:
+                entities[i] = spawnEntity(app->win,PLAYER);
+                break;        
+            case 11:
+                entities[i] = spawnEntity(app->win,BONUS);
+                break;
+            default:
+                entities[i] = spawnEntity(app->win,OBSTACLE);
+                break;
+        }
     }
-    
+
+    // START
+    app->state=START;
     // animation
     // int counter =5;
     // int i = 0;
+    app->clock->l_delay = SDL_GetTicks();
+    app->clock->l_time = SDL_GetTicks();
+    app->clock->l_frame = SDL_GetTicks();
+    app->state=GAME;
 
-    entities[1]->hide=0;
-    while(entities[0]->life!=0 && input_handler(entities[0]) == 0){
-        Move(entities);
-        isCollinding(entities);
-        Refresh(win,entities);
-        SDL_Delay(FPS(60));
+    while(_player->state!=DEAD && input_handler(_player,app) == 0){
+        switch(app->state){
+            case GAME:
+                Move(entities);
+                isCollinding(entities);
+                stateAction(entities);
+                Event(entities);
+                Refresh(app->win,entities);
+                Timer(app->clock,entities);
+                break;
+            
+            case PAUSE:
+                Refresh(app->win,entities);
+                SDL_Delay(FPS(90));
+                break;
+        }
     }
 
     // if dead
     // game over
-    
+
+    // CLOSE WIN
     for(int i=0;i!=10;i++){
         free(entities[i]);
     }
+    SDL_DestroyTexture(app->win->texture);
+    SDL_FreeSurface(app->win->image);
+    SDL_DestroyRenderer(app->win->renderer);
+    SDL_DestroyWindow(app->win->window);
+    free(app->win);
+    free(app);
+
     return 0;
 }
-
-// SDL_DestroyTexture(texture);
-// SDL_FreeSurface(image);
-// SDL_DestroyRenderer(renderer);
-// SDL_DestroyWindow(window);
-
 
 // // factory
 // if(null) {

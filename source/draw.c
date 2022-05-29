@@ -1,8 +1,11 @@
-#include "draw.h"
+#include "library.h"
+#include "macro.h"
+#include "struct/window.h"
+#include "struct/entity.h"
 
 void prepareCanvas(Window *win){
     SDL_RenderClear(win->renderer);
-    // INSIDE A RECT
+    // SET BACKGROUND
     SDL_Rect background={ 0, 0, WINDOW_WIDTH ,WINDOW_HEIGHT };
     SDL_RenderCopy(win->renderer, win->texture, NULL, &background);
 }
@@ -36,14 +39,14 @@ void Refresh(Window *win,Entity **entities){
     // clear screen
     prepareCanvas(win);
     
-
-    for(int i=0;i!=10;i++){
+    for(int i=9;i!= -1;i--){
         // refresh pos
         if(entities[i]->hide == false){
             drawEntity(win, entities[i]);
             drawCollider(win,entities[i]);
         }
     }
+    
     //print screen
     presentCanvas(win);
 }

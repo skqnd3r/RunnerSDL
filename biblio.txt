@@ -18,5 +18,5 @@ INPUT
     touches
     https://wiki.libsdl.org/SDL_Keycode
 
-tutoriel
+TUTORIEL
     https://loka.developpez.com/tutoriel/sdl/

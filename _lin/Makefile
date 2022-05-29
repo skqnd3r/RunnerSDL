@@ -2,6 +2,7 @@ CC = gcc
 NAME = RunnerSDL
 
 SRC = source/main.c\
+	source/event.c\
 	source/collider.c\
 	source/draw.c\
 	source/init.c\

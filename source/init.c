@@ -1,4 +1,27 @@
-#include "init.h"
+#include "library.h"
+#include "macro.h"
+#include "struct/window.h"
+#include "struct/config.h"
+
+int initApp(Config *app){
+    Window *win = malloc(sizeof(Window));
+    app->win=win;
+    if(initSDL(app->win) < 0){
+        printf("Error inside initSDL()");
+        return -1;
+    };
+    
+    Clock *clock = malloc(sizeof(Clock));
+    if(clock==NULL){
+        printf("Failed to initialize Clock");
+        return -1;
+    };
+    app->clock=clock;
+    app->clock->l_time=0;
+    app->clock->l_frame=0;
+    srand(time(0));
+    return 0;
+}
 
 int initSDL(Window *win){
     // Init SDL
