@@ -29,17 +29,16 @@ void Count(int arg,Entity **entities){
     for(int i=0;i!=10;i++){
         if(entities[i]->hide==true){
             switch(arg){
-            case seconds:
-                if(entities[i]->counter!=DONE){
-                    entities[i]->counter-=1;
-                    // printf("%d : %d\n",entities[i]->tag,entities[i]->frame);
-                }
-                break;
-            case frames:
-                if(entities[i]->frame!=DONE){
-                    entities[i]->frame-=1;
-                }
-                break;
+                case seconds:
+                    if(entities[i]->counter!=DONE){
+                        entities[i]->counter-=1;
+                    }
+                    break;
+                case frames:
+                    if(entities[i]->frame!=DONE){
+                        entities[i]->frame-=1;
+                    }
+                    break;
             }
         }
     }

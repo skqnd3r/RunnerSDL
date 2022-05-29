@@ -13,6 +13,6 @@ typedef struct{
     int seed;
 } Config;
 
-int initApp(Config *app);
+Config *initApp();
 
 #endif

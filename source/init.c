@@ -3,24 +3,31 @@
 #include "struct/window.h"
 #include "struct/config.h"
 
-int initApp(Config *app){
+Config *initApp(){
+    Config *app = malloc(sizeof(Config));
+    if(app==NULL){
+        printf("Failed to allocate memory for App");
+        return NULL;
+    };
+
     Window *win = malloc(sizeof(Window));
     app->win=win;
     if(initSDL(app->win) < 0){
         printf("Error inside initSDL()");
-        return -1;
+        return NULL;
     };
     
     Clock *clock = malloc(sizeof(Clock));
     if(clock==NULL){
-        printf("Failed to initialize Clock");
-        return -1;
+        printf("Failed to allocate memory for clock");
+        return NULL;
     };
     app->clock=clock;
     app->clock->l_time=0;
     app->clock->l_frame=0;
+    app->state=START;
     srand(time(0));
-    return 0;
+    return app;
 }
 
 int initSDL(Window *win){
@@ -56,4 +63,16 @@ int initSDL(Window *win){
         return -1;
     }
     return 0;
+}
+
+void Close(Config *app,Entity **entities){
+    for(int i=0;i!=10;i++){
+        free(entities[i]);
+    }
+    SDL_DestroyTexture(app->win->texture);
+    SDL_FreeSurface(app->win->image);
+    SDL_DestroyRenderer(app->win->renderer);
+    SDL_DestroyWindow(app->win->window);
+    free(app->win);
+    free(app);
 }
