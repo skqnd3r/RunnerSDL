@@ -9,7 +9,7 @@ void Factory(Entity *entity){
     entity->state=NONE;
     entity->pos_y = getRand(0,WINDOW_HEIGHT-entity->height);
     entity->pos_x = WINDOW_WIDTH;
-    entity->speed = (float) getRand(1,4);
+    entity->speed = getRand(80,250)/100;
     entity->mv_x = getRand(-3,-1);
     entity->mv_y = 0;
     entity->frame = DONE;
@@ -36,11 +36,11 @@ Entity *spawnEntity(Window *win,int tag){
         entity->state=NONE;
         entity->score = 0;
     } else {
-        switch (tag){        
+        switch (tag){
             case OBSTACLE:
-                entity->texture = loadTexture(win,"ressource/meteor_3491x1376.png");
-                entity->width = (int)3491/30;
-                entity->height = (int)1376/30;
+                entity->texture = loadTexture(win,"ressource/meteor_1632x1410.png");
+                entity->width = (int)1632/25;
+                entity->height = (int)1410/25;
                 Factory(entity);
                 break;
 
@@ -57,31 +57,10 @@ Entity *spawnEntity(Window *win,int tag){
     return entity;
 }
 
-void Move(Entity **entities){
-    for(int i = 0;i!=10;i+=1){
-        if(entities[i]->hide == 0){
-            entities[i]->pos_y += entity_MVY;
-
-            // FIRST IS PLAYER *par vitesse
-            if(entities[i]->tag!=PLAYER){
-                entities[i]->collider=setCollider(entities[i]);
-                entities[i]->pos_x += _player->speed*-1 + entity_MVX;
-            } else {
-                // PLAYER SPEED
-                // SWITCH TO ANIM
-                // entities[i]->pos_x += _player->speed*PLAYER->mv_x;
-                entities[i]->pos_x += 0;
-            }
-
-            entities[i]->collider=setCollider(entities[i]);
-        }
-    }
-}
-
 void stateAction(Entity **entities){
     for(int i = 0;i!=10;i+=1){
         if(entities[i]->hide==false){
-        // check position meteor -> DEAD
+        
             if(entities[i]->tag!=PLAYER){
                 if(entities[i]->pos_x<0-entities[i]->width){
                     entities[i]->state=HIT;
@@ -93,6 +72,9 @@ void stateAction(Entity **entities){
             if(entities[i]->state!=NONE){
                 if(entities[i]->state==HIT){
                     entities[i]->life-=1;
+                    if(entities[i]->tag==PLAYER){
+                        printf("Life : %d\n",_player->life);
+                    }
                     if(entities[i]->life==0){
                         entities[i]->state=DEAD;
                     } else {

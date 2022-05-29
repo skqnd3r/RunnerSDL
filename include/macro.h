@@ -33,8 +33,8 @@
 //MOVEMENT
 #define FAST 1
 #define SLOW -1
-#define DOWN 4
-#define UP -4
+#define DOWN 2
+#define UP -2
 
 //SHORTCUT
 #define _player entities[0]
