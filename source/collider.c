@@ -12,7 +12,7 @@ SDL_Rect setCollider(Entity *entity){
             OFFSET(25,0,-25,-13);
             break;
         case OBSTACLE:
-            OFFSET(0,5,-80,-13);
+            OFFSET(5,10,-30,-20);
             break;
         case BONUS:
             OFFSET(25,0,-25,-13);

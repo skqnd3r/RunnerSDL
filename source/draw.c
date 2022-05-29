@@ -43,7 +43,7 @@ void Refresh(Window *win,Entity **entities){
         // refresh pos
         if(entities[i]->hide == false){
             drawEntity(win, entities[i]);
-            drawCollider(win,entities[i]);
+            // drawCollider(win,entities[i]);
         }
     }
     
